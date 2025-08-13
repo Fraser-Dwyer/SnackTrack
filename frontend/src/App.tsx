@@ -18,7 +18,7 @@ function App() {
           <p className='informationMsg'>No items on the shopping list - try adding one</p>
         ) : (
           items.map((item) => {
-            return <ListItem itemName={item} />
+            return <ListItem key={item} itemName={item} />
           })
         )}
       </div>
