@@ -3,4 +3,22 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  color: black;
+}
+
+.shoppingListContainer {
+  background-color: rgb(220, 220, 220);
+  width: 600px;
+}
+
+.shoppingListContainer > h1 {
+  text-decoration: underline;
+  margin: 0px;
+  padding-block: 1rem;
+}
+
+.itemsContainer {
+  gap: 1rem;
+  padding-left: 2rem;
+  padding-bottom: 1rem;
 }
