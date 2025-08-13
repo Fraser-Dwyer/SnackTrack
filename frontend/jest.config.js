@@ -1,5 +1,10 @@
-module.exports = {
+const config = {
+  preset: 'ts-jest',
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["src/setupTests.js"],
   moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
+  moduleNameMapper: {
+    "\\.css$": "identity-obj-proxy",
+  },
 };
+
+export default config;
