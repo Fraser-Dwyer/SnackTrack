@@ -1,3 +1,33 @@
+.addItemContainer {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+
 .inputField {
-    background-color: rgb(220, 220, 220);
+  background-color: rgb(220, 220, 220);
+  border: 2px solid black;
+  border-radius: 5px;
+  flex-grow: 1;
+  font-size: larger;
+  padding: 1rem;
+}
+
+.inputField:focus {
+  outline: none !important;
+  border: 2px solid rgb(24, 24, 255);
+}
+
+.addButton {
+  color: white;
+  font-size: larger;
+}
+
+.errorMessage {
+  color: red;
+  font-size: larger;
+  font-weight: bold;
+  margin: 0;
+  padding-bottom: 1rem;
 }
