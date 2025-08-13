@@ -1,4 +1,22 @@
+.listItemContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .shoppingListItem {
   text-align: start;
   font-size: 1.5rem;
+}
+
+.deleteButton {
+  outline: none !important;
+  border: none !important;
+  background-color: transparent;
+  padding: 0;
+  height: min-content;
+}
+
+.deleteButton:hover > * {
+  fill: #f73535;
 }
