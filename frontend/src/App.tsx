@@ -1,8 +1,15 @@
-import './App.css'
 import ListItem from './components/ListItem'
+import AddItem from './components/AddItem'
+import { useState } from 'react';
+import './App.css'
 
 function App() {
-  const items = ["Apples", "Pears", "Oranges"]
+  const [items, setItems] = useState([]);
+
+  const handleAddItem = (newItem: string) => {
+    setItems((prev) => [...prev, newItem]);
+  };
+
   return (
     <div className='shoppingListContainer'>
       <h1>Shopping List</h1>
@@ -11,6 +18,7 @@ function App() {
           return <ListItem itemName={item} />
         })}
       </div>
+      <AddItem onAddItem={handleAddItem} />
     </div>
   )
 }
