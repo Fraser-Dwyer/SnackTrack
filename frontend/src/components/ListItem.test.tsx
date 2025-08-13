@@ -13,11 +13,11 @@ describe('ShoppingListItem - Unit Tests', () => {
 
   test('calls onDeleteItem with correct item', () => {
     const mockOnDelete = jest.fn()
-    render(<ListItem itemName={'A'} onDeleteItem={mockOnDelete} />)
+    render(<ListItem itemName={'Apples'} onDeleteItem={mockOnDelete} />)
 
-    fireEvent.click(screen.getByLabelText(/delete-button/i))
+    fireEvent.click(screen.getByLabelText(/delete-Apples/i))
 
-    expect(mockOnDelete).toHaveBeenCalledWith('A')
+    expect(mockOnDelete).toHaveBeenCalledWith('Apples')
     expect(mockOnDelete).toHaveBeenCalledTimes(1)
   })
 })

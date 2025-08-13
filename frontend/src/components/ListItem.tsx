@@ -16,7 +16,7 @@ function ListItem({
       <button
         className={styles.deleteButton}
         onClick={() => onDeleteItem(itemName)}
-        aria-label='delete-button'
+        aria-label={`delete-${itemName}`}
       >
         <FaRegTrashAlt size={30} />
       </button>
