@@ -1,12 +1,41 @@
-# React + Vite
+# 🛒 Shopping List – Mayden Coding Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Tech stack:** React + TypeScript  
+**Time spent:** 6 hours  
+**Focus:** Well-structured, secure, and clean code with comprehensive testing
 
-Currently, two official plugins are available:
+## ✅ Stories Implemented
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. View a list of items on the shopping list
+2. Add new items to the shopping list
+3. Remove items from the shopping list
+4. Cross off completed items
+5. Persist the shopping list across browser refreshes via local storage
 
-## Expanding the ESLint configuration
+## 🧪 Testing
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Implemented a mix of unit and integration tests using React Testing Library and Jest covering core functionality including:
+    - Adding, removing, and toggling items
+    - Persistence logic
+    - UI state for empty and populated lists
+
+### Coverage Report:
+<img src="./screenshots/testCoverage.png" width="500">
+
+## 🚀 How to Run
+1. Clone the repository:
+    - `git clone <repository-url>`
+    - `cd SnackTrack`
+
+2. Install dependencies:
+    - `npm install`
+
+3. Start the development server:
+    - `npm run dev`
+
+4. Open your browser and go to http://localhost:5173
+
+## 🧩 How to Test
+
+1. Run the test suite:
+    - `npm run test`
