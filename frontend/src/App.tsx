@@ -1,17 +1,27 @@
 import ListItem from './components/ListItem'
 import AddItem from './components/AddItem'
+import { Item } from './types/Item'
 import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState<Item[]>([])
 
   const handleAddItem = (newItem: string) => {
-    setItems((prev) => [...prev, newItem])
+    setItems((prev) => [...prev, {name: newItem, checked: false}])
   }
 
   const handleDeleteItem = (itemToDelete: string) => {
-    setItems(items.filter((item) => item !== itemToDelete))
+    setItems(items.filter((item: Item) => item.name !== itemToDelete))
+  }
+
+  const handleToggleItem = (itemToToggle: Item) => {
+    setItems(items.map((item: Item) => {
+      if (item.name === itemToToggle.name) {
+        return { ...item, checked: !item.checked };
+      }
+      return item;
+    }))
   }
 
   return (
@@ -22,7 +32,7 @@ function App() {
           <p className='informationMsg'>No items on the shopping list - try adding one</p>
         ) : (
           items.map((item) => {
-            return <ListItem key={item} itemName={item} onDeleteItem={handleDeleteItem} />
+            return <ListItem key={item.name} item={item} onDeleteItem={handleDeleteItem} onToggleItem={handleToggleItem} />
           })
         )}
       </div>

@@ -1,12 +1,15 @@
 .listItemContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  gap: 1rem;
   align-items: center;
 }
 
 .shoppingListItem {
   text-align: start;
   font-size: 1.5rem;
+  flex-grow: 1;
+  transform: translate(0px, -3px); /* Center align */
 }
 
 .deleteButton {
@@ -19,4 +22,30 @@
 
 .deleteButton:hover > * {
   fill: #f73535;
+}
+
+.checkbox {
+  appearance: none; /* Remove default styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 24px;          
+  height: 24px;
+  border: 2px solid black;
+  background-color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.checkbox:checked {
+  background-color: black;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6 10.8L3.2 8 2 9.2l4 4 8-8-1.2-1.2z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+}
+
+.itemCrossed {
+  text-decoration: line-through;
 }
