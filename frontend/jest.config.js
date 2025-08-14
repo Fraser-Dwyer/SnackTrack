@@ -3,8 +3,10 @@ const config = {
   testEnvironment: "jsdom",
   moduleFileExtensions: ["js", "jsx", "ts", "tsx"],
   moduleNameMapper: {
-    "\\.css$": "identity-obj-proxy",
+    "\\.module\\.css$": "identity-obj-proxy",
+    "\\.css$": "identity-obj-proxy"
   },
+  extensionsToTreatAsEsm: [".ts", ".tsx"]
 };
 
 export default config;

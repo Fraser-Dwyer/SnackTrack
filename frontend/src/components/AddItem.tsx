@@ -1,11 +1,12 @@
-import { useState } from 'react'
 import styles from './AddItem.module.css'
+import { Item } from '../types/Item'
+import { useState } from 'react'
 
 export default function ItemList({
   items,
   onAddItem,
 }: {
-  items: string[]
+  items: Item[]
   onAddItem: (newItem: string) => void
 }) {
   const [inputValue, setInputValue] = useState('')
@@ -23,7 +24,7 @@ export default function ItemList({
       return
     }
 
-    if (items.some((item) => item === trimmed)) {
+    if (items.some((item: Item) => item.name === trimmed)) {
       setError('Item already on the list')
       return
     }

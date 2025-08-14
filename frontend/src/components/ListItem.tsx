@@ -1,22 +1,28 @@
-import styles from './ListItem.module.css'
+import { Item } from '../types/Item'
+import * as styles from './ListItem.module.css'
 import { FaRegTrashAlt } from 'react-icons/fa'
 
 function ListItem({
-  itemName,
+  item,
   onDeleteItem,
+  onToggleItem
 }: {
-  itemName: string
-  onDeleteItem: (itemName: string) => void
+  item: Item
+  onDeleteItem: (itemName: string) => void,
+  onToggleItem: (item: Item) => void
 }) {
   return (
     <div className={styles.listItemContainer}>
-      <p className={styles.shoppingListItem} data-testid='listItem'>
-        {itemName}
+      <input className={styles.checkbox} type="checkbox" checked={item.checked} onChange={(e) => onToggleItem(item)}
+        data-testid={`checkbox-${item.name}`}
+      />
+      <p className={`${styles.shoppingListItem} ${item.checked ? styles.itemCrossed : ''}`} data-testid='listItem'>
+        {item.name}
       </p>
       <button
         className={styles.deleteButton}
-        onClick={() => onDeleteItem(itemName)}
-        aria-label={`delete-${itemName}`}
+        onClick={() => onDeleteItem(item.name)}
+        aria-label={`delete-${item.name}`}
       >
         <FaRegTrashAlt size={30} />
       </button>

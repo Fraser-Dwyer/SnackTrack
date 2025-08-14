@@ -43,7 +43,7 @@ describe('ItemInput (unit)', () => {
 
   test('Add item which already exists', () => {
     const mockOnAdd = jest.fn()
-    render(<AddItem onAddItem={mockOnAdd} items={['Apples']} />)
+    render(<AddItem onAddItem={mockOnAdd} items={[{name: 'Apples', checked: false}]} />)
 
     const input = screen.getByLabelText(/item-input/i)
     fireEvent.change(input, { target: { value: 'Apples' } })
