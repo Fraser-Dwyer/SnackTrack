@@ -1,7 +1,17 @@
 import { render, screen, fireEvent } from '@testing-library/react'
-import { addItem } from './TestUtils'
 import '@testing-library/jest-dom'
 import App from './App'
+
+/**
+ * Integration Test Utilities
+ */
+export function addItem(itemName: string) {
+  const input = screen.getByLabelText(/item-input/i)
+  const addButton = screen.getByLabelText(/add-button/i)
+
+  fireEvent.change(input, { target: { value: itemName } })
+  fireEvent.click(addButton)
+}
 
 describe('App (integration)', () => {
   test('Adds items to the list via child component', () => {
