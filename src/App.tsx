@@ -1,11 +1,18 @@
 import ListItem from './components/ListItem'
+import { useState, useEffect } from 'react'
 import AddItem from './components/AddItem'
 import { Item } from './types/Item'
-import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [items, setItems] = useState<Item[]>([])
+  const [items, setItems] = useState<Item[]>(() => {
+    const saved = localStorage.getItem("items");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
   const handleAddItem = (newItem: string) => {
     setItems((prev) => [...prev, {name: newItem, checked: false}])
