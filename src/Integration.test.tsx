@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import App from './App'
+import { Item } from './types/Item'
 
 /**
  * Integration Test Utilities
@@ -14,6 +15,10 @@ export function addItem(itemName: string) {
 }
 
 describe('App (integration)', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
   test('Adds items to the list via child component', () => {
     render(<App />)
 
@@ -79,4 +84,15 @@ describe('App (integration)', () => {
     expect(first).toHaveClass('undefined', 'undefined')
     expect(second).toHaveClass('undefined')
   })
+
+  test("Loads item from local storage", () => {
+    const mockTodos: Item[] = [{ name: "Apples", checked: false }];
+    localStorage.setItem("items", JSON.stringify(mockTodos));
+
+    render(<App />);
+  
+    // The items should now appear
+    const items = screen.getAllByTestId("listItem");
+    expect(items).toHaveLength(mockTodos.length);
+  });
 })
