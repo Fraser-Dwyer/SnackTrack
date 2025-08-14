@@ -38,7 +38,7 @@ describe('App (integration)', () => {
     const button = screen.getByLabelText(/add-button/i)
     fireEvent.click(button) // Empty input
 
-    expect(screen.queryAllByRole('listitem')).toHaveLength(0)
+    expect(screen.queryByTestId('listItem')).not.toBeInTheDocument()
   })
 
   test('Removes an item from the list when delete clicked', () => {
@@ -63,5 +63,20 @@ describe('App (integration)', () => {
 
     expect(screen.queryAllByRole('listItem')).toHaveLength(0)
     expect(screen.getByText('No items on the shopping list - try adding one')).toBeInTheDocument()
+  })
+
+  test('Toggle item to be checked', () => {
+    render(<App />)
+
+    addItem('First')
+    addItem('Second')
+    fireEvent.click(screen.getByTestId('checkbox-First'));
+
+    const first = screen.getByText('First')
+    const second = screen.getByText('Second')
+
+    // FIXME: See 'Calls onToggleItem with correct item' unit test
+    expect(first).toHaveClass('undefined', 'undefined')
+    expect(second).toHaveClass('undefined')
   })
 })

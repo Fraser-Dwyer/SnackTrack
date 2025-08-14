@@ -1,5 +1,5 @@
 import { Item } from '../types/Item'
-import styles from './ListItem.module.css'
+import * as styles from './ListItem.module.css'
 import { FaRegTrashAlt } from 'react-icons/fa'
 
 function ListItem({
@@ -14,7 +14,7 @@ function ListItem({
   return (
     <div className={styles.listItemContainer}>
       <input className={styles.checkbox} type="checkbox" checked={item.checked} onChange={(e) => onToggleItem(item)}
-        data-testid="simple-checkbox"
+        data-testid={`checkbox-${item.name}`}
       />
       <p className={`${styles.shoppingListItem} ${item.checked ? styles.itemCrossed : ''}`} data-testid='listItem'>
         {item.name}
