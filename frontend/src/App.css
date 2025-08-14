@@ -23,7 +23,7 @@
 
 .itemsContainer {
   gap: 1rem;
-  padding-left: 2rem;
+  padding-inline: 2rem;
 }
 
 .informationMsg {

@@ -10,6 +10,10 @@ function App() {
     setItems((prev) => [...prev, newItem])
   }
 
+  const handleDeleteItem = (itemToDelete: string) => {
+    setItems(items.filter((item) => item !== itemToDelete))
+  }
+
   return (
     <div className='shoppingListContainer'>
       <h1>Shopping List</h1>
@@ -18,11 +22,11 @@ function App() {
           <p className='informationMsg'>No items on the shopping list - try adding one</p>
         ) : (
           items.map((item) => {
-            return <ListItem key={item} itemName={item} />
+            return <ListItem key={item} itemName={item} onDeleteItem={handleDeleteItem} />
           })
         )}
       </div>
-      <AddItem onAddItem={handleAddItem} />
+      <AddItem onAddItem={handleAddItem} items={items} />
     </div>
   )
 }

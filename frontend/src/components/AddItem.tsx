@@ -1,9 +1,14 @@
 import { useState } from 'react'
 import styles from './AddItem.module.css'
 
-export default function ItemList({ onAddItem }: { onAddItem: (newItem: string) => void }) {
+export default function ItemList({
+  items,
+  onAddItem,
+}: {
+  items: string[]
+  onAddItem: (newItem: string) => void
+}) {
   const [inputValue, setInputValue] = useState('')
-  const [items, setItems] = useState([])
   const [error, setError] = useState('')
 
   const handleAdd = () => {
@@ -15,6 +20,11 @@ export default function ItemList({ onAddItem }: { onAddItem: (newItem: string) =
     }
     if (trimmed.length > 20) {
       setError('Item cannot exceed 20 characters')
+      return
+    }
+
+    if (items.some((item) => item === trimmed)) {
+      setError('Item already on the list')
       return
     }
 

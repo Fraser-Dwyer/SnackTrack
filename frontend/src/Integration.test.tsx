@@ -2,6 +2,17 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import App from './App'
 
+/**
+ * Integration Test Utilities
+ */
+export function addItem(itemName: string) {
+  const input = screen.getByLabelText(/item-input/i)
+  const addButton = screen.getByLabelText(/add-button/i)
+
+  fireEvent.change(input, { target: { value: itemName } })
+  fireEvent.click(addButton)
+}
+
 describe('App (integration)', () => {
   test('Adds items to the list via child component', () => {
     render(<App />)
@@ -28,5 +39,29 @@ describe('App (integration)', () => {
     fireEvent.click(button) // Empty input
 
     expect(screen.queryAllByRole('listitem')).toHaveLength(0)
+  })
+
+  test('Removes an item from the list when delete clicked', () => {
+    render(<App />)
+
+    addItem('First')
+    addItem('Second')
+
+    fireEvent.click(screen.getByLabelText(/delete-First/i))
+
+    expect(screen.queryByText('First')).not.toBeInTheDocument()
+    expect(screen.getByText('Second')).toBeInTheDocument()
+  })
+
+  test('List is empty after deleting last item', () => {
+    render(<App />)
+
+    addItem('First')
+    addItem('Second')
+    fireEvent.click(screen.getByLabelText(/delete-First/i))
+    fireEvent.click(screen.getByLabelText(/delete-Second/i))
+
+    expect(screen.queryAllByRole('listItem')).toHaveLength(0)
+    expect(screen.getByText('No items on the shopping list - try adding one')).toBeInTheDocument()
   })
 })
